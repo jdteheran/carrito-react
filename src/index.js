@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Fruta from './components/Fruta'
+import App from './App'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Fruta nombre={'Mango'} precio={3} />
-   
+   <App />
   </React.StrictMode>
 );

@@ -4,31 +4,32 @@ class Fruta extends React.Component {
 
     constructor(props) {
         super()
-        console.log('me ejecuté constructor');
-    }
-
-    componentDidMount() {
-        console.log('me ejecuté componentDidMount');
     }
 
     state = {
         cantidad: 0,
+        subtotal: 0
     }
 
     quitar = () => {
         this.setState({
-            cantidad: this.state.cantidad - 1
+            cantidad: this.state.cantidad - 1,
+            subtotal: (this.state.cantidad - 1) * this.props.precio
         })
+
+        this.props.metodo(this.state.subtotal)
     }
 
-    agregar = () => {
-        this.setState({
-            cantidad:  this.state.cantidad + 1
+    agregar = async () => {
+        await this.setState({
+            cantidad:  this.state.cantidad + 1,
+            subtotal: (this.state.cantidad + 1) * this.props.precio
         })
+
+        this.props.metodo(this.state.subtotal)
     }
 
     render() {
-        console.log('me ejecuté render');
         return (
             <>
                 <h3>Fruta: {this.props.nombre}</h3>
@@ -38,7 +39,7 @@ class Fruta extends React.Component {
                 <button onClick={this.quitar}>-</button>
                 <button onClick={this.agregar}>+</button>
 
-                <h4>Total: {this.state.cantidad * this.props.precio}</h4>
+                <h4>Subtotal: {this.state.subtotal}</h4>
                 <hr />
             </>
         )
