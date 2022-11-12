@@ -6,6 +6,10 @@ class Fruta extends React.Component {
         super()
     }
 
+    componentWillUnmount() {
+        console.log('me desaparecieron', this.props.nombre);
+    }
+
     state = {
         cantidad: 0,
         subtotal: 0
@@ -45,8 +49,10 @@ class Fruta extends React.Component {
 
                 <button onClick={this.quitar}>-</button>
                 <button onClick={this.agregar}>+</button>
+                <button >Quitar</button>
 
                 <h4>Subtotal: {this.state.subtotal}</h4>
+
                 <hr />
             </>
         )
