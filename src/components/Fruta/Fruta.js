@@ -15,6 +15,10 @@ class Fruta extends React.Component {
         subtotal: 0
     }
 
+    eliminar = () => {
+        this.props.eliminar(this.props.id)
+    }
+
     quitar = async () => {
         await this.setState({
             cantidad: this.state.cantidad - 1,
@@ -49,7 +53,7 @@ class Fruta extends React.Component {
 
                 <button onClick={this.quitar}>-</button>
                 <button onClick={this.agregar}>+</button>
-                <button >Quitar</button>
+                <button onClick={this.eliminar}>Quitar</button>
 
                 <h4>Subtotal: {this.state.subtotal}</h4>
 
