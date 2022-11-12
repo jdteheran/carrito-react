@@ -11,22 +11,29 @@ class Fruta extends React.Component {
         subtotal: 0
     }
 
-    quitar = () => {
-        this.setState({
+    quitar = async () => {
+        await this.setState({
             cantidad: this.state.cantidad - 1,
             subtotal: (this.state.cantidad - 1) * this.props.precio
         })
 
-        this.props.metodo(this.state.subtotal)
+        this.enviar_padre()
     }
 
     agregar = async () => {
         await this.setState({
-            cantidad:  this.state.cantidad + 1,
+            cantidad: this.state.cantidad + 1,
             subtotal: (this.state.cantidad + 1) * this.props.precio
         })
 
-        this.props.metodo(this.state.subtotal)
+        this.enviar_padre()
+    }
+
+    enviar_padre = () => {
+        this.props.metodo({
+            id: this.props.id,
+            subtotal: this.state.subtotal
+        })
     }
 
     render() {

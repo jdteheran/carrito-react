@@ -6,13 +6,9 @@ class Total extends React.Component {
         super()
     }
 
-    state = {
-        total: 0
-    }
-
     render() {
         return (
-            <h3>Total: {this.state.total}</h3>
+            <h3>Total: {this.props.valor}</h3>
         )
     }
 }
